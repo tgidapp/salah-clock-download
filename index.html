@@ -41,6 +41,9 @@
   .dl small { display: block; font-weight: 400; font-size: .9rem; color: #e8fff2; }
   .note { color: var(--soft); font-size: .95rem; text-align: center; margin: 10px 0 0; }
   h2 { font-size: 1.25rem; margin: 0 0 10px; }
+  .copybtn { background: var(--mint); color: #13314b; border: none; border-radius: 12px; padding: 8px 16px; font-size: 1rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .copybtn:active { opacity: .8; }
+  .copymsg { color: var(--mint); font-weight: 700; margin-right: 6px; }
   ul.f { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   ul.f li { display: flex; gap: 10px; align-items: flex-start; }
   ul.f .i { font-size: 1.3rem; line-height: 1.5; }
@@ -100,7 +103,7 @@
     <p class="muted" style="margin:0 0 10px">لودجت حقيقي على شاشة الآيفون الرئيسية (نفس تصميم أندرويد) عبر تطبيق <b>Scriptable</b> المجاني — بلا كمبيوتر ولا حساب مطوّر:</p>
     <ol class="steps">
       <li><div>ثبّت تطبيق <b>Scriptable</b> المجاني من App Store.</div></li>
-      <li><div>افتح ملف السكربت الجاهز: <a class="link" href="app/salah-scriptable.js">salah-scriptable.js</a> ← «تحديد الكل» ← «نسخ».</div></li>
+      <li><div>انسخ كود السكربت بضغطة: <button id="copybtn" class="copybtn" type="button">📋 نسخ الكود</button> <span id="copymsg" class="copymsg"></span><br><small class="muted">لن يظهر لك الكود — يُنسخ مباشرة إلى الحافظة.</small></div></li>
       <li><div>في Scriptable اضغط ➕ (سكربت جديد) ← الصق ← سمِّه «ساعة الصلاة» ← احفظ. شغّله مرة واسمح له بالموقع.</div></li>
       <li><div>على الشاشة الرئيسية: اضغط مطوّلاً ← ➕ ← <b>Scriptable</b> ← اختر الحجم «متوسط» ← أضف.</div></li>
       <li><div>اضغط على الودجت ← <b>Script</b> = «ساعة الصلاة». تم ✓</div></li>
@@ -158,6 +161,27 @@
   fetch('version.json?t=' + Date.now()).then(r => r.json()).then(v => {
     document.getElementById('ver').textContent = 'الإصدار ' + v.versionName + ' • لأجهزة أندرويد';
   }).catch(() => {});
+
+  // زر «نسخ الكود» لسكربت الآيفون — يُحمّل الكود مسبقاً ثم ينسخه بضغطة دون عرضه
+  var scriptCode = '';
+  fetch('app/salah-scriptable.js?t=' + Date.now()).then(r => r.text()).then(t => { scriptCode = t; }).catch(() => {});
+  var cbtn = document.getElementById('copybtn');
+  if (cbtn) cbtn.addEventListener('click', function () {
+    var msg = document.getElementById('copymsg');
+    var done = function () { msg.textContent = 'تم النسخ ✓'; setTimeout(function(){ msg.textContent=''; }, 4000); };
+    var fail = function () { msg.textContent = 'تعذّر النسخ — افتح الرابط ونسخه يدوياً'; };
+    var code = scriptCode;
+    var finish = function (text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { legacy(text) ? done() : fail(); });
+      } else { legacy(text) ? done() : fail(); }
+    };
+    function legacy(text){ try { var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.focus(); ta.select(); var ok=document.execCommand('copy'); document.body.removeChild(ta); return ok; } catch(e){ return false; } }
+    if (code) finish(code);
+    else { // لم يكتمل التحميل بعد: اجلبه الآن
+      fetch('app/salah-scriptable.js?t=' + Date.now()).then(r => r.text()).then(function(t){ scriptCode=t; finish(t); }).catch(fail);
+    }
+  });
 </script>
 </body>
 </html>
