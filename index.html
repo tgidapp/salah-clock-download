@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ساعة الصلاة — تنزيل التطبيق</title>
+<meta name="description" content="ودجت شفاف لشاشة أندرويد الرئيسية: مواقيت الصلاة لموقعك بطريقة أم القرى، والتاريخ الهجري والميلادي، والطقس، وبوصلة القبلة.">
+<meta property="og:title" content="ساعة الصلاة 🕌">
+<meta property="og:description" content="مواقيت الصلاة والقبلة والتاريخ الهجري والطقس في ودجت شفاف على شاشتك الرئيسية — مجاني وبلا إعلانات.">
+<meta property="og:image" content="https://tgidapp.github.io/salah-clock-download/widget.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Ccircle cx='54' cy='54' r='54' fill='%236FBFDB'/%3E%3Ccircle cx='54' cy='54' r='32' fill='%23fff'/%3E%3Ccircle cx='67' cy='45' r='27' fill='%236FBFDB'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg1: #1d3f60; --bg2: #3a82a5; --bg3: #8fd0e0;
+    --glass: rgba(255,255,255,.14); --stroke: rgba(255,255,255,.35);
+    --text: #ffffff; --soft: #dcebf7; --mint: #a8f0e8; --green: #2fa36b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--text);
+    font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", system-ui, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+    min-height: 100vh; line-height: 1.7;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 48px; }
+  .card {
+    background: var(--glass); border: 1px solid var(--stroke); border-radius: 24px;
+    padding: 20px; margin: 18px 0; backdrop-filter: blur(8px);
+  }
+  header { text-align: center; padding-top: 8px; }
+  .logo { width: 84px; height: 84px; }
+  h1 { margin: 6px 0 2px; font-size: 2rem; }
+  .tag { color: var(--soft); margin: 0; }
+  .shot { width: 100%; border-radius: 22px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  .dl {
+    display: block; text-align: center; text-decoration: none; color: #fff;
+    background: var(--green); border-radius: 18px; padding: 18px 16px;
+    font-size: 1.35rem; font-weight: 700; box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  }
+  .dl small { display: block; font-weight: 400; font-size: .9rem; color: #e8fff2; }
+  .note { color: var(--soft); font-size: .95rem; text-align: center; margin: 10px 0 0; }
+  h2 { font-size: 1.25rem; margin: 0 0 10px; }
+  ul.f { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  ul.f li { display: flex; gap: 10px; align-items: flex-start; }
+  ul.f .i { font-size: 1.3rem; line-height: 1.5; }
+  ol.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; counter-reset: s; }
+  ol.steps li {
+    counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center;
+    background: rgba(255,255,255,.08); border-radius: 18px; padding: 12px;
+  }
+  ol.steps li::before {
+    content: counter(s); width: 44px; height: 44px; border-radius: 50%;
+    background: var(--mint); color: #13314b; font-weight: 800; font-size: 1.2rem;
+    display: grid; place-items: center;
+  }
+  .mock {
+    margin-top: 8px; background: #1f2a36; border-radius: 14px; padding: 10px 12px;
+    font-size: .92rem; color: #e6eef6; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .mock b { color: #7cc4ff; white-space: nowrap; }
+  .pill { background: #2a3b4d; border-radius: 10px; padding: 2px 10px; white-space: nowrap; }
+  .muted { color: var(--soft); font-size: .95rem; }
+  footer { text-align: center; color: var(--soft); margin-top: 26px; font-size: .95rem; }
+  footer a, .card a.link { color: var(--mint); }
+  code { direction: ltr; unicode-bidi: embed; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg class="logo" viewBox="0 0 108 108" aria-hidden="true">
+      <circle cx="54" cy="54" r="54" fill="#6FBFDB"/>
+      <circle cx="54" cy="54" r="32" fill="#fff"/>
+      <circle cx="67" cy="45" r="27" fill="#6FBFDB"/>
+      <path fill="#E8FBF8" d="M72,64l2.2,4.6 5,.7-3.6,3.5.9,5-4.5-2.4-4.5,2.4.9-5-3.6-3.5 5-.7z"/>
+    </svg>
+    <h1>ساعة الصلاة</h1>
+    <p class="tag">ودجت شفاف لشاشتك الرئيسية — مجاني وبلا إعلانات</p>
+  </header>
+
+  <div class="card">
+    <img class="shot" src="widget.png" alt="صورة الودجت على الشاشة الرئيسية: الموقع والطقس وقرص القبلة والتاريخان ومواقيت الصلاة">
+  </div>
+
+  <a class="dl" id="dl" href="https://github.com/tgidapp/salah-clock-download/releases/latest/download/salah-clock.apk">
+    ⬇️ تنزيل التطبيق
+    <small id="ver">لأجهزة أندرويد • ملف صغير جداً</small>
+  </a>
+  <p class="note">لأجهزة <b>أندرويد</b> فقط حالياً. الآيفون غير مدعوم بعد.</p>
+
+  <div class="card">
+    <h2>ماذا يقدّم؟</h2>
+    <ul class="f">
+      <li><span class="i">🕌</span><span><b>مواقيت الصلاة لموقعك</b> بطريقة أم القرى، مع الوقت المتبقي للصلاة القادمة. تتحدث تلقائياً إذا سافرت.</span></li>
+      <li><span class="i">🔔</span><span><b>تنبيه عند دخول الوقت</b> وتذكير قبل الصلاة (٥ إلى ٣٠ دقيقة) تختاره أنت.</span></li>
+      <li><span class="i">🕋</span><span><b>قرص القبلة</b> على الشاشة الرئيسية، وبالضغط عليه يتحول إلى بوصلة حية تخضرّ عند الاتجاه الصحيح.</span></li>
+      <li><span class="i">📅</span><span><b>التاريخ الهجري</b> (تقويم أم القرى) <b>والميلادي</b> مع أسماء الشهور واليوم.</span></li>
+      <li><span class="i">☀️</span><span><b>الطقس:</b> الحالة والحرارة والرطوبة لمكانك.</span></li>
+      <li><span class="i">🌙</span><span><b>أوقات إضافية:</b> وقت الضحى، وبداية الثلث الأخير من الليل.</span></li>
+      <li><span class="i">📐</span><span>الودجت <b>يتمدد بأي مقاس</b>، والمحتوى يتكيّف معه دون أن يُقص.</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>طريقة التثبيت</h2>
+    <ol class="steps">
+      <li><div>اضغط زر <b>«تنزيل التطبيق»</b> في الأعلى، وانتظر حتى يكتمل التنزيل.
+        <div class="mock"><span>📄 salah-clock.apk</span><b>فتح</b></div></div></li>
+      <li><div>افتح الملف من إشعار التنزيل أو من مجلد <b>التنزيلات</b>.</div></li>
+      <li><div><b>أول مرة فقط:</b> يطلب أندرويد السماح بالتثبيت من هذا المصدر. اضغط <b>الإعدادات</b> ثم فعّل <b>السماح</b> وارجع.
+        <div class="mock"><span>السماح من هذا المصدر</span><span class="pill">✓ تشغيل</span></div></div></li>
+      <li><div>قد تظهر رسالة من حماية جوجل لأن التطبيق ليس من المتجر. اختر <b>«التثبيت على أي حال»</b>.
+        <div class="mock"><span>تطبيق غير معروف لدى Play Protect</span><b>التثبيت على أي حال</b></div></div></li>
+      <li><div>اضغط <b>تثبيت</b>، ثم افتح التطبيق واسمح له <b>بالموقع</b> و<b>الإشعارات</b>.</div></li>
+      <li><div>اضغط <b>«إضافة الودجت للشاشة الرئيسية»</b> داخل التطبيق، أو اضغط مطولاً على الشاشة الرئيسية ← <b>الأدوات</b> ← <b>ساعة الصلاة</b>.</div></li>
+    </ol>
+    <p class="muted">التحديثات: يظهر لك داخل التطبيق «يوجد تحديث جديد»، فتضغطه ثم «تثبيت». لا تحتاج أن تبحث عن رابط جديد.</p>
+  </div>
+
+  <div class="card">
+    <h2>الخصوصية</h2>
+    <p class="muted" style="margin:0">
+      لا حساب ولا إعلانات ولا جمع بيانات. موقعك يبقى في جوالك ويُستخدم لحساب المواقيت والقبلة.
+      لجلب الطقس فقط تُرسل إحداثيات تقريبية إلى خدمة الطقس المجانية Open-Meteo.
+      ولعرض اسم مدينتك يستخدم الجوال خدمة الخرائط المدمجة فيه.
+    </p>
+  </div>
+
+  <footer>
+    للتواصل والاقتراحات: <a href="mailto:aaqhkf@gmail.com">aaqhkf@gmail.com</a>
+  </footer>
+</main>
+<script>
+  fetch('version.json?t=' + Date.now()).then(r => r.json()).then(v => {
+    document.getElementById('ver').textContent = 'الإصدار ' + v.versionName + ' • لأجهزة أندرويد';
+  }).catch(() => {});
+</script>
+</body>
+</html>
